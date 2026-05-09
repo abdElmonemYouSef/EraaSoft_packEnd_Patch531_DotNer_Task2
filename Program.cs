@@ -9,7 +9,7 @@
 
             List<int> UsedList = new();
 
-            List<int> list = new List<int>() { 1,2,3,4,5,6,7,8,9 };
+            List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 
             List<int> usrMemberList = new List<int>();
@@ -25,7 +25,6 @@
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("G - generate My own list\r\n" +
-                    "G - generate list\r\n" +
                     "D - display values\r\n" +
                     "A - Add a number\r\n" +
                     "M - Display mean of the numbers\r\n" +
@@ -147,24 +146,41 @@
 
                         Console.WriteLine(" please Enter the value to add : ");
                         int UserAddedValueInput = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("the value is : " + UserAddedValueInput);
-
-
-                        list.Add(UserAddedValueInput);
-
-                        Console.Write("[");
-                        Console.Write(list[1]);
-
+                        bool isDuplicatedValue = false;
                         for (int i = 0; i < list.Count; i++)
                         {
-                            Console.Write($"{list[i]}");
-
-                            if (i < list.Count - 1)
+                            if (UserAddedValueInput == list[i])
                             {
-                                Console.Write(",");
+                                isDuplicatedValue = true;
+                                Console.WriteLine("Douplicated values is not allowed ");
+
+                                break;
+
                             }
+
                         }
-                        Console.Write("]");
+                        if (!isDuplicatedValue)
+                        {
+
+
+                            list.Add(UserAddedValueInput);
+                            Console.WriteLine("the added value is : " + UserAddedValueInput);
+
+                            Console.Write("[");
+                            Console.Write(list[1]);
+
+                            for (int j = 0; j < list.Count; j++)
+                            {
+                                Console.Write($"{list[j]}");
+
+                                if (j < list.Count - 1)
+                                {
+                                    Console.Write(",");
+                                }
+                            }
+                            Console.Write("]");
+
+                        }
 
 
 
@@ -298,7 +314,7 @@
                         }
 
                         break; // sort ascendent
-                   
+
                     case "sd":
                         for (int i = 0; i < list.Count - 1; i++)
                         {
@@ -348,11 +364,11 @@
                         Console.WriteLine("Are You Sure , you Want to clear the List ? (Y _ N)");
                         string usrinput = Console.ReadLine();
 
-                        
+
 
                         if (usrinput.ToLower() == "y")
                         {
-                            if (list.Count == 0) Console.WriteLine(" The List Is Empty" );
+                            if (list.Count == 0) Console.WriteLine(" The List Is Empty");
                             else
                             {
                                 list.Clear();
@@ -372,7 +388,7 @@
 
                                 Console.WriteLine("list cleared ");
                             }
-     
+
                         }
                         else Console.WriteLine("action ignored ");
                         break; // clear
